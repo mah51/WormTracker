@@ -17,4 +17,4 @@ A website built using react that allows the user to load an image and overlay a 
 - Add copy settings to clipboard button.
 - General display fixes. 
 
-![Screenshot of website] (/screenshot.png)
+![Screenshot of website](/screenshot.png)

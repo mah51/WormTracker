@@ -73,7 +73,9 @@ function App() {
               height: (heightGrid * 2).toString() + 'vh',
               width: (widthGrid * 2).toString() + 'vh',
               top: (yGrid.toString() * 4) + 'px',
-              left: (xGrid.toString()* 4) + 'px'
+              left: (xGrid.toString()* 4) + 'px',
+              maxHeight: '100vh',
+              maxWidth: '70vw',
             }
           }
         >
@@ -97,7 +99,7 @@ function App() {
       </div>
       <div className="formcontainer">
         <form >
-          <p>Number of grids: {count}</p>
+          <p>Number of squares: {count}</p>
           <p>Image link:</p>
           <input type="text" placeholder={imageURL} onChange={(e) => setImageURL(e.target.value) }/>
           <button onClick={(e) => {

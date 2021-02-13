@@ -11,7 +11,6 @@ table, th, td {
   max-height: 100%;
   max-width: 70%;
   position: absolute;
-  float:left;
 }
 
 input {
@@ -22,6 +21,15 @@ input {
 form {
   height: 100%;
   width: 100%;
+}
+
+form > p:first-child {
+  font-size: 2em;
+
+}
+
+form > button {
+  margin-top: 1vh  ;
 }
 
 

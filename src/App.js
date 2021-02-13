@@ -64,7 +64,7 @@ function App() {
           className={"img"}
           src={imageURL}
           onLoad={onImgLoad}
-          alt="Image of worm tracks hopefully :)"
+          alt="There doesn't seem to be an image here :/"
         />
         <table
           className={"table"}

@@ -16,3 +16,5 @@ A website built using react that allows the user to load an image and overlay a 
 - Add ability to zoom :/
 - Add copy settings to clipboard button.
 - General display fixes. 
+
+![Screenshot of website] (https://github.com/mah51/WormTracker/blob/main/Screenshots/1.png?raw=true)

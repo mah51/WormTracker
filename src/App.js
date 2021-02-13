@@ -1,6 +1,5 @@
 import './App.css'
 import {useEffect, useState} from 'react';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
 
@@ -13,7 +12,6 @@ function App() {
   const [yGrid, setYGrid] = useState(0);
   const [heightGrid, setHeightGrid] = useState(50);
   const [widthGrid, setWidthGrid] = useState(50);
-  const [imageSize, setImageSize] = useState(false)
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
@@ -27,7 +25,7 @@ function App() {
       }
       setTable(tables)
     }
-  },[table])
+  },[table, imageURL])
 
   function handleGridXChange(event, value) {
     setXGrid(value)
@@ -52,19 +50,13 @@ function App() {
     setCount(count + increment  );
   }
 
-  function onImgLoad({target: img}) {
-    console.log(img.offsetHeight)
-    setImageSize([img.offsetWidth, img.offsetHeight])
-  }
-
   return (
     <>
       <div className="container">
         <img
           className={"img"}
           src={imageURL}
-          onLoad={onImgLoad}
-          alt="There doesn't seem to be an image here :/"
+          alt="There doesn't seem to be anything here :/"
         />
         <table
           className={"table"}

@@ -12,6 +12,7 @@ function App() {
   const [yGrid, setYGrid] = useState(0);
   const [heightGrid, setHeightGrid] = useState(50);
   const [widthGrid, setWidthGrid] = useState(50);
+  const [checkbox, setCheckbox] = useState(false);
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
@@ -19,9 +20,9 @@ function App() {
       for ( let i = 0; i < 11; i++) {
         const rowArray = [];
         for (let j = 0; j < 11; j++) {
-          rowArray.push({selected: false, cellNumber: j})
+          rowArray.push({sel: false, cNum: j})
         }
-        tables.push({rowNumber: i, cells: rowArray})
+        tables.push({rNum: i, cells: rowArray})
       }
       setTable(tables)
     }
@@ -37,17 +38,45 @@ function App() {
 
   function handleGridHeightChange(event, value) {
     setHeightGrid(value)
+    if (checkbox) {
+      setWidthGrid(value)
+    }
   }
 
   function handleGridWidthChange(event, value) {
     setWidthGrid(value)
+    if (checkbox) {
+      setHeightGrid(value)
+    }
   }
 
   function handleGridClick(rowNumber, cellNumber) {
-    table[rowNumber].cells[cellNumber].selected = !table[rowNumber].cells[cellNumber].selected;
+    table[rowNumber].cells[cellNumber].sel = !table[rowNumber].cells[cellNumber].sel;
     setTable([...table]);
-    const increment = table[rowNumber].cells[cellNumber].selected ? 1 : -1;
+    const increment =  table[rowNumber].cells[cellNumber].sel ? 1 : -1;
     setCount(count + increment  );
+  }
+
+  function handleDownload(e) {
+    e.preventDefault();
+
+
+  }
+
+  function handleImport(e) {
+    e.preventDefault();
+    const data = prompt('Please paste previously copied data');
+
+    try{
+      const parsedData = JSON.parse(data)
+      setXGrid(parsedData.grid.x)
+      setYGrid(parsedData.grid.y)
+      setHeightGrid(parsedData.grid.height)
+      setWidthGrid(parsedData.grid.width)
+      setTable(parsedData.rows)
+    } catch(e) {
+      alert('The data you provided could not be parsed.')
+    }
   }
 
   return (
@@ -62,22 +91,20 @@ function App() {
           className={"table"}
           style={
             {
-              height: (heightGrid * 2).toString() + 'vh',
-              width: (widthGrid * 2).toString() + 'vh',
-              top: (yGrid.toString() * 4) + 'px',
-              left: (xGrid.toString()* 4) + 'px',
-              maxHeight: '100vh',
-              maxWidth: '70vw',
+              height: ( heightGrid * 20  ).toString() + 'px',
+              width: ( widthGrid * 20 ).toString() + 'px',
+              top: ( yGrid.toString() * 4 ) + 'px',
+              left: ( xGrid.toString()* 4 ) + 'px',
             }
           }
         >
           {
             table.map(row => {
               return (
-                <tr key={row.rowNumber}>
+                <tr key={row.rNum}>
                   {
                     row.cells.map(cell => {
-                      return <td key={`${row.rowNumber}:${cell.cellNumber}`} style={{ opacity: '10%', backgroundColor: cell.selected ? 'green' : 'red'}} onClick={() => handleGridClick(row.rowNumber, cell.cellNumber)} />
+                      return <td key={`${row.rNum}:${cell.cNum}`} style={{ opacity: '10%', backgroundColor: cell.sel ? 'green' : 'red'}} onClick={() => handleGridClick(row.rNum, cell.cNum)} />
                     })
                   }
                 </tr>
@@ -112,9 +139,50 @@ function App() {
           </div>
           <div className="gridLengthHeight">
             <p>height</p>
-            <Slider value={heightGrid} onChange={handleGridHeightChange} min={10} max={90}  aria-labelledby="continuous-slider" />
+            <Slider value={heightGrid} onChange={handleGridHeightChange} min={10} max={90} step={0.1}  aria-labelledby="continuous-slider" />
             <p>width</p>
-            <Slider value={widthGrid} onChange={handleGridWidthChange} min={10} max={90}  aria-labelledby="continuous-slider" />
+            <Slider value={widthGrid} onChange={handleGridWidthChange} min={10} max={90} step={0.1} aria-labelledby="continuous-slider" />
+          </div>
+          <div className="checkboxContainer">
+            Link height and width:
+            <input type="checkbox" onChange={() => {
+              setWidthGrid(heightGrid)
+              setCheckbox(!checkbox)
+            }} value={checkbox}/>
+          </div>
+          <div style={{marginTop: '20px'}} className="copyContainer">
+            <button
+              onClick={(e) =>  {
+                e.preventDefault();
+                navigator.clipboard.writeText(
+                  JSON.stringify(
+                    {
+                      "grid": {
+                        "x": xGrid,
+                        "y": yGrid,
+                        "height": heightGrid,
+                        "width": widthGrid
+                      },
+                      "rows" : table
+
+                    }
+                  )
+                )
+                  .then(() => {
+                    alert('Copied settings to clipboard')
+                  })
+                  .catch(console.error)
+              }}
+
+            >Export grid position</button>
+            <button
+              onClick={(e) =>  handleDownload(e)}
+
+            >Download grid position</button>
+            <button style={{marginLeft: '20px'}} onClick={(e) => handleImport(e) } >Import grid data</button>
+          </div>
+          <div className="footer">
+            <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. For instructions and the code for this website click <a href={'https://github.com/mah51/WormTracker/README.md'}>here</a></p>
           </div>
         </form>
       </div>

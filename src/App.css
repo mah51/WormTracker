@@ -3,15 +3,31 @@ table, th, td {
   border-collapse: collapse;
 }
 
+.img {
+  max-height: 1080px;
+  max-width: 960px;
+  position: absolute;
+}
+
+@media only screen and (max-width: 1300px) {
+  .formcontainer{
+    visibility: hidden;
+  }
+}
 .table {
   position: absolute;
 }
 
-.img {
-  max-height: 100%;
-  max-width: 70%;
-  position: absolute;
+.footer>p{
+  color: slategray;
+  font-size: .7em;
 }
+
+.footer>p>a:visited, .footer>p>a {
+  color: dodgerblue;
+  text-underline-style: none;
+}
+
 
 input {
   width: 95%;
@@ -35,6 +51,6 @@ form > button {
 
 .container{ display: flex;  margin: 0; width: 70vw; height: 100vh; overflow: auto; }
 
-.formcontainer{ display:flex; margin: auto 10vw auto auto; width: 20vw; height: 30vh; float: right }
+.formcontainer{ display:flex; margin: auto auto auto 3vw; float: right }
 
 body, #root {  display: flex; width: 100vw; height: 100vh; }

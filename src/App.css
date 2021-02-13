@@ -28,6 +28,17 @@ table, th, td {
   text-underline-style: none;
 }
 
+.import {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.export {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 input {
   width: 95%;
@@ -37,6 +48,12 @@ input {
 form {
   height: 100%;
   width: 100%;
+}
+
+.exportContainer{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 form > p:first-child {

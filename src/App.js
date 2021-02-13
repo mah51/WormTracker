@@ -59,11 +59,27 @@ function App() {
 
   function handleDownload(e) {
     e.preventDefault();
+    const fileName = prompt('What would you like the file to be called? (Leave blank for default name)') || 'worm_grid_position'
+    const element = document.createElement("a");
+    const file = new Blob([JSON.stringify(
+      {
+        "grid": {
+          "x": xGrid,
+          "y": yGrid,
+          "height": heightGrid,
+          "width": widthGrid
+        },
+        "rows" : table
 
-
+      }
+    )], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = `${fileName}.txt`;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
   }
 
-  function handleImport(e) {
+  function handlePaste(e) {
     e.preventDefault();
     const data = prompt('Please paste previously copied data');
 
@@ -77,6 +93,29 @@ function App() {
     } catch(e) {
       alert('The data you provided could not be parsed.')
     }
+  }
+
+  function handleUpload(e) {
+    e.preventDefault();
+    const reader = new FileReader()
+    reader.onload = async (e) => {
+      const data = e.target.result
+      try {
+        const parsedData = JSON.parse(data)
+        setXGrid(parsedData.grid.x)
+        setYGrid(parsedData.grid.y)
+        setHeightGrid(parsedData.grid.height)
+        setWidthGrid(parsedData.grid.width)
+        setTable(parsedData.rows)
+      } catch(e) {
+        console.log(e)
+        alert('Could not parse provided data.')
+      }
+    };
+    if (e.target.files[0]) {
+      reader.readAsText(e.target.files[0])
+    }
+
   }
 
   return (
@@ -127,7 +166,7 @@ function App() {
             setXGrid(0);
             setYGrid(0);
             setWidthGrid(50);
-            setWidthGrid(50);
+            setHeightGrid(50);
             e.preventDefault();
           }}>Reset Grid</button>
           <div className="gridCoordContainer">
@@ -150,39 +189,46 @@ function App() {
               setCheckbox(!checkbox)
             }} value={checkbox}/>
           </div>
-          <div style={{marginTop: '20px'}} className="copyContainer">
-            <button
-              onClick={(e) =>  {
-                e.preventDefault();
-                navigator.clipboard.writeText(
-                  JSON.stringify(
-                    {
-                      "grid": {
-                        "x": xGrid,
-                        "y": yGrid,
-                        "height": heightGrid,
-                        "width": widthGrid
-                      },
-                      "rows" : table
+          <div style={{marginTop: '20px'}} className="exportContainer">
+            <div className="export">
+              <button
+                onClick={(e) =>  {
+                  e.preventDefault();
+                  navigator.clipboard.writeText(
+                    JSON.stringify(
+                      {
+                        "grid": {
+                          "x": xGrid,
+                          "y": yGrid,
+                          "height": heightGrid,
+                          "width": widthGrid
+                        },
+                        "rows" : table
 
-                    }
+                      }
+                    )
                   )
-                )
-                  .then(() => {
-                    alert('Copied settings to clipboard')
-                  })
-                  .catch(console.error)
-              }}
+                    .then(() => {
+                      alert('Copied settings to clipboard')
+                    })
+                    .catch(console.error)
+                }}
 
-            >Export grid position</button>
-            <button
-              onClick={(e) =>  handleDownload(e)}
+              >Copy grid position</button>
+              <button
+                onClick={(e) =>  handleDownload(e)}
 
-            >Download grid position</button>
-            <button style={{marginLeft: '20px'}} onClick={(e) => handleImport(e) } >Import grid data</button>
+              >Download grid position</button>
+            </div>
+
+            <div className="import">
+              <button onClick={(e) => handlePaste(e) } >Paste grid data</button>
+              <input type={"file"} onChange={(e) => handleUpload(e)} />
+            </div>
+
           </div>
           <div className="footer">
-            <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. For instructions and the code for this website click <a href={'https://github.com/mah51/WormTracker/README.md'}>here</a></p>
+            <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. For instructions and the code for this website click <a href={'https://github.com/mah51/WormTracker'}>here</a></p>
           </div>
         </form>
       </div>

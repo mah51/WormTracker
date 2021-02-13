@@ -1,7 +1,8 @@
 import './App.css'
 import {useEffect, useState} from 'react';
-import Slider from '@material-ui/core/Slider';
-
+import Sliders from './components/Sliders'
+import Grid from './components/Grid';
+import ExImport from "./components/ExImport";
 
 function App() {
 
@@ -10,9 +11,10 @@ function App() {
   const [count, setCount] = useState(0);
   const [xGrid, setXGrid] = useState(0);
   const [yGrid, setYGrid] = useState(0);
-  const [heightGrid, setHeightGrid] = useState(50);
-  const [widthGrid, setWidthGrid] = useState(50);
+  const [heightGrid, setHeightGrid] = useState(54);
+  const [widthGrid, setWidthGrid] = useState(54);
   const [checkbox, setCheckbox] = useState(false);
+  const [menu, setMenu] = useState(true);
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
@@ -82,7 +84,7 @@ function App() {
   function handlePaste(e) {
     e.preventDefault();
     const data = prompt('Please paste previously copied data');
-
+    if (!data) return;
     try{
       const parsedData = JSON.parse(data)
       setXGrid(parsedData.grid.x)
@@ -120,117 +122,75 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <img
-          className={"img"}
-          src={imageURL}
-          alt="There doesn't seem to be anything here :/"
-        />
-        <table
-          className={"table"}
-          style={
-            {
-              height: ( heightGrid * 20  ).toString() + 'px',
-              width: ( widthGrid * 20 ).toString() + 'px',
-              top: ( yGrid.toString() * 4 ) + 'px',
-              left: ( xGrid.toString()* 4 ) + 'px',
-            }
-          }
-        >
-          {
-            table.map(row => {
-              return (
-                <tr key={row.rNum}>
-                  {
-                    row.cells.map(cell => {
-                      return <td key={`${row.rNum}:${cell.cNum}`} style={{ opacity: '10%', backgroundColor: cell.sel ? 'green' : 'red'}} onClick={() => handleGridClick(row.rNum, cell.cNum)} />
-                    })
-                  }
-                </tr>
-              )
+      <div className="menuCheckContainer">
+        <p className={'menuCheckLabel'}>Hide menu:</p>
 
-            })
-          }
-
-        </table>
-
+        <input
+          className={'menuCheck'}
+          type="checkbox"
+          onChange={() => {
+            setMenu(!menu)
+          }} value={menu}/>
       </div>
-      <div className="formcontainer">
-        <form >
-          <p>Number of squares: {count}</p>
-          <p>Image link:</p>
-          <input type="text" placeholder={imageURL} onChange={(e) => setImageURL(e.target.value) }/>
-          <button onClick={(e) => {
-            setTable([]);
-            setCount(0);
-            setXGrid(0);
-            setYGrid(0);
-            setWidthGrid(50);
-            setHeightGrid(50);
-            e.preventDefault();
-          }}>Reset Grid</button>
-          <div className="gridCoordContainer">
-            <p>x</p>
-            <Slider value={xGrid} onChange={handleGridXChange} aria-labelledby="continuous-slider" />
-            <p>y</p>
-            <Slider value={yGrid} onChange={handleGridYChange} aria-labelledby="continuous-slider" />
+      <div className="contain">
+        <div className="imageContainer">
+          <Grid
+            imageURL={imageURL}
+            handleGridClick={handleGridClick}
+            heightGrid={heightGrid}
+            widthGrid={widthGrid}
+            yGrid={yGrid}
+            xGrid={xGrid}
+            table={table}
 
-          </div>
-          <div className="gridLengthHeight">
-            <p>height</p>
-            <Slider value={heightGrid} onChange={handleGridHeightChange} min={10} max={90} step={0.1}  aria-labelledby="continuous-slider" />
-            <p>width</p>
-            <Slider value={widthGrid} onChange={handleGridWidthChange} min={10} max={90} step={0.1} aria-labelledby="continuous-slider" />
-          </div>
-          <div className="checkboxContainer">
-            Link height and width:
-            <input type="checkbox" onChange={() => {
-              setWidthGrid(heightGrid)
-              setCheckbox(!checkbox)
-            }} value={checkbox}/>
-          </div>
-          <div style={{marginTop: '20px'}} className="exportContainer">
-            <div className="export">
-              <button
-                onClick={(e) =>  {
-                  e.preventDefault();
-                  navigator.clipboard.writeText(
-                    JSON.stringify(
-                      {
-                        "grid": {
-                          "x": xGrid,
-                          "y": yGrid,
-                          "height": heightGrid,
-                          "width": widthGrid
-                        },
-                        "rows" : table
+          />
+        </div>
+        {
+          menu ? (
+            <div className="formContainer" >
+              <Sliders
+                setTable={setTable}
+                setCount={setCount}
+                setXGrid={setXGrid}
+                setYGrid={setYGrid}
+                setWidthGrid={setWidthGrid}
+                setHeightGrid={setHeightGrid}
+                count={count}
+                imageURL={imageURL}
+                setImageURL={setImageURL}
+                xGrid={xGrid}
+                handleGridXChange={handleGridXChange}
+                yGrid={yGrid}
+                handleGridYChange={handleGridYChange}
+                heightGrid={heightGrid}
+                handleGridHeightChange={handleGridHeightChange}
+                widthGrid={widthGrid}
+                handleGridWidthChange={handleGridWidthChange}
+                checkbox={checkbox}
+                setCheckbox={setCheckbox}
+                menu={menu}
+                setMenu={setMenu}
+              />
+              <ExImport
 
-                      }
-                    )
-                  )
-                    .then(() => {
-                      alert('Copied settings to clipboard')
-                    })
-                    .catch(console.error)
-                }}
-
-              >Copy grid position</button>
-              <button
-                onClick={(e) =>  handleDownload(e)}
-
-              >Download grid position</button>
+                xGrid={xGrid}
+                yGrid={yGrid}
+                heightGrid={heightGrid}
+                widthGrid={widthGrid}
+                table={table}
+                handleDownload={handleDownload}
+                handlePaste={handlePaste}
+                handleUpload={handleUpload}
+              />
+              <div className="footer">
+                <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. </p>
+                <p>For instructions on how to use this tool, reporting issues, and viewing the code:  <a href={'https://github.com/mah51/WormTracker'}>WormTracker Repo</a></p>
+              </div>
             </div>
+          ) : ''
+        }
 
-            <div className="import">
-              <button onClick={(e) => handlePaste(e) } >Paste grid data</button>
-              <input type={"file"} onChange={(e) => handleUpload(e)} />
-            </div>
 
-          </div>
-          <div className="footer">
-            <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. For instructions and the code for this website click <a href={'https://github.com/mah51/WormTracker'}>here</a></p>
-          </div>
-        </form>
       </div>
     </>
 

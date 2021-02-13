@@ -1,4 +1,4 @@
-# WormTracker v1.1
+# WormTracker v1.0
 
 
 A website built using react that allows the user to load an image and overlay a grid for counting worm tracks on an agar plate.

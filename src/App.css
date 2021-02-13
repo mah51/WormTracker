@@ -1,3 +1,8 @@
+@media only screen and (max-height: 700px) {
+  .formContainer{ visibility: hidden}
+  .menuCheckContainer{ visibility: hidden}
+}
+
 table, th, td {
   border: 2px solid black;
   border-collapse: collapse;
@@ -5,50 +10,52 @@ table, th, td {
 
 .img {
   max-height: 1080px;
-  max-width: 960px;
+  max-width: 1300px;
   position: absolute;
 }
 
-@media only screen and (max-width: 1300px) {
-  .formcontainer{
-    visibility: hidden;
-  }
-}
-.table {
+
+.grid {
   position: absolute;
 }
 
 .footer>p{
   color: slategray;
-  font-size: .7em;
+  font-size: 1.5vh;
+  text-align: center;
 }
 
+
+
 .footer>p>a:visited, .footer>p>a {
-  color: dodgerblue;
+  color: #f287a8;
   text-underline-style: none;
 }
 
-.import {
+.copyButtons {
   display:flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  width: 18vw;
+  margin:1vh auto 1vh auto;
 }
 
-.export {
+.fileButtons {
   display:flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  width: 18vw;
+  margin: 1vh auto 2vh auto;
 }
 
-input {
-  width: 95%;
-  font-size: 1em;
-}
-
-form {
-  height: 100%;
+.imageLink {
   width: 100%;
+  height: 4vh;
+  line-height: 1vh;
+  margin: 0 0 3vh 0;
+  padding: .5vh!important;
+  font-size: 2vh;
+  display: block;
 }
+
 
 .exportContainer{
   display:flex;
@@ -56,18 +63,137 @@ form {
   flex-wrap: wrap;
 }
 
-form > p:first-child {
-  font-size: 2em;
-
+.downloadButton, .copyButton, .pasteButton, .uploadButton, .resetGrid {
+  height: 4vh;
+  width: 8vw;
+  font-size: 1.5vh;
+  margin: 0;
+  text-align: center;
+  vertical-align: center;
+  line-height: 1.5vh;
+  border-radius: 2vh;
 }
 
-form > button {
-  margin-top: 1vh  ;
+.uploadButton {
+  display: inline-block;
+  text-align: center;
+  line-height: 3vh;
+}
+
+.checkbox {
+  margin: 0.1vh 0 0 1vh;
+  width: 1.3vh;
+  height: 1.3vh;
+}
+.gridLabel {
+  font-size: 1.3vh;
+  line-height: 1.2vh;
+}
+
+.importLabel {
+  font-size: 1.6vh;
+  font-weight: 500;
+  line-height: 1.6vh;
+}
+
+.checkboxContainer{
+  margin-bottom: 2vh;
+  display:flex;
+}
+
+.contain{ display: flex;  margin: 0; width: 100%; height: 100vh; overflow: auto;  }
+
+.imageContainer{ width: 70vw; }
+
+.formContainer{ width:30vw; height:100vh; z-index: 10000; background-color: white; padding: 5vh 3vw 5vh 3vw; border-left: 0.2vh solid lightgray}
+
+html, body {margin: 0; height: 100%;}
+
+.resetGrid {
+  background-color: #f287a8 ;
+  border-color: #f287a8 ;
+  width: 6vw;
+}
+.resetGrid:hover {
+  background-color: #bd5779 ;
+  border-color: #bd5779 ;
+}
+
+.resetGrid:active, .resetGrid:focus {
+  background-color: #bd5779 !important;
+  border-color: #bd5779 !important;
+}
+
+.slider-label{
+  font-weight: 500;
+  font-size: 1.3vh;
+  margin: 0 0 2vh 0;
+  padding:0;
 }
 
 
-.container{ display: flex;  margin: 0; width: 70vw; height: 100vh; overflow: auto; }
+.title {
+  text-align: center;
+  margin-bottom: 3vh;
+  font-size: 3vh;
+}
 
-.formcontainer{ display:flex; margin: auto auto auto 3vw; float: right }
+.count {
+  font-size: 2vh;
+}
+.imageTitle {
+  font-size: 1.3vh;
+  margin-bottom: 1vh;
+  font-weight: 500;
+}
 
-body, #root {  display: flex; width: 100vw; height: 100vh; }
+.MuiSlider-root {
+  height: 1vh!important;
+  padding: 0!important;
+  margin: 0!important;
+  line-height: 1.5vh!important;
+  font-size: 1vh!important;
+}
+
+.MuiSlider-rail {
+  padding: 0!important;
+  margin: 0!important;
+  height: 0.3vh!important;
+  line-height: 1.5vh!important;
+  font-size: 1vh!important;
+}
+.MuiSlider-track {
+  height: 0.3vh!important;
+  line-height: 1.5vh!important;
+  font-size: 1vh!important;
+}
+.MuiSlider-thumb {
+  height: 1.7vh!important;
+  width: 1.7vh!important;
+  margin-top: -0.7vh!important;
+  margin-left: -1vh!important;
+}
+
+.MuiSlider-thumb::after {
+  top: -1.04vh!important;
+  left: -1.04vh!important;
+  right: -1.04vh!important;
+  bottom: -1.04vh!important;
+}
+
+.menuCheckContainer {
+  position: absolute;
+  right: 5vh;
+  display:flex;
+  z-index:99999999;
+}
+
+.menuCheckContainer>p{
+  font-size: 1vh;
+}
+
+.menuCheck {
+  width: 1vh;
+  height: 1vh;
+  margin: .4vh 0 0 1vh;
+}

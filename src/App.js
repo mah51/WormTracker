@@ -71,7 +71,8 @@ function App() {
           "height": heightGrid,
           "width": widthGrid
         },
-        "rows" : table
+        "rows" : table,
+        "count": count
 
       }
     )], {type: 'text/plain'});
@@ -92,6 +93,7 @@ function App() {
       setHeightGrid(parsedData.grid.height)
       setWidthGrid(parsedData.grid.width)
       setTable(parsedData.rows)
+      setCount(parsedData.count)
     } catch(e) {
       alert('The data you provided could not be parsed.')
     }
@@ -109,9 +111,10 @@ function App() {
         setHeightGrid(parsedData.grid.height)
         setWidthGrid(parsedData.grid.width)
         setTable(parsedData.rows)
+        setCount(count)
       } catch(e) {
         console.log(e)
-        alert('Could not parse provided data.')
+        alert('Could not parse provided file.')
       }
     };
     if (e.target.files[0]) {
@@ -181,6 +184,7 @@ function App() {
                 handleDownload={handleDownload}
                 handlePaste={handlePaste}
                 handleUpload={handleUpload}
+                count={count}
               />
               <div className="footer">
                 <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. </p>

@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 
-function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, handlePaste, handleUpload}) {
+function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, handlePaste, handleUpload, count}) {
   return (
     <div style={{marginTop: '20px'}} className="exportContainer">
       <p className={'importLabel'}>Import / Export Grid selection and position:</p>
@@ -19,7 +19,8 @@ function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, h
                     "height": heightGrid,
                     "width": widthGrid
                   },
-                  "rows" : table
+                  "rows" : table,
+                  "count": count
 
                 }
               )

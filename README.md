@@ -10,18 +10,14 @@ A website built using react that allows the user to load an image and overlay a 
 3. Set X and Y start points with the sliders, then set height and width to range in the grid
 4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed on the right.
 
-N.B. The Grid can only be altered if the chrome window is over 1300px wide, this is to prevent the overlapping of the controls with the grid when zooming in. My CSS skills suck but I will try to fix this soon!
+N.B. The Grid can only be altered if the browser window is over 700px tall, this is to prevent the overlapping of the controls with the grid when zooming in. My CSS skills suck but I will try to fix this soon!
 
 This code is [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
 
 ![Screenshot of website](/screenshot.png)
 
 ###//TODO:
-
-- Add ability to zoom :/
-- Add copy settings to clipboard button.
 - General display fixes. 
-- Overlapping bug
 
 
 

@@ -2,6 +2,8 @@ import Slider from '@material-ui/core/Slider';
 import Button from 'react-bootstrap/Button';
 import { ThemeProvider } from '@material-ui/styles'
 import { createMuiTheme } from '@material-ui/core/styles';
+import ReactGA from "react-ga";
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -44,7 +46,13 @@ function Sliders({
       <h2 className={'count'}>Number of squares: {count}</h2>
 
       <h3 className={'imageTitle'}>Image link:</h3>
-      <input className={'imageLink'} type="text" placeholder={imageURL} onChange={(e) => setImageURL(e.target.value) }/>
+      <input className={'imageLink'} type="text" placeholder={imageURL} onChange={(e) => {
+        ReactGA.event({
+          category: "Image",
+          action: "New image link",
+        });
+        setImageURL(e.target.value)
+      } }/>
 
       <p className={'slider-label'}>Change the grid:</p>
         <ThemeProvider theme={theme}>
@@ -91,6 +99,12 @@ function Sliders({
           className={'checkbox'}
           type="checkbox"
           onChange={() => {
+          if (!checkbox) {
+            ReactGA.event({
+              category: "Grid",
+              action: "Square grid enabled",
+            });
+          }
           setWidthGrid(heightGrid)
           setCheckbox(!checkbox)
         }} value={checkbox}/>

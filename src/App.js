@@ -64,8 +64,8 @@ function App() {
     setTable([...table] );
     setCount( getCount(table) );
     ReactGA.event({
-      category: "Grid click",
-      action: "User clicked a grid!",
+      category: "Grid",
+      action: "Grid square clicked",
     });
 
   }
@@ -87,6 +87,10 @@ function App() {
     )
       .then(() => {
         alert('Copied settings to clipboard')
+        ReactGA.event({
+          category: "Grid",
+          action: "Grid copied",
+        });
       })
       .catch(console.error)
   }
@@ -113,6 +117,10 @@ function App() {
     element.download = `${fileName}.txt`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
+    ReactGA.event({
+      category: "Grid",
+      action: "Grid downloaded",
+    });
   }
 
   function handlePaste(e) {
@@ -120,6 +128,10 @@ function App() {
     const data = prompt('Please paste previously copied data');
     if (!data) return;
     getImport(data);
+    ReactGA.event({
+      category: "Grid",
+      action: "Grid pasted",
+    });
   }
 
   function handleUpload(e) {
@@ -132,6 +144,10 @@ function App() {
     if (e.target.files[0]) {
       reader.readAsText(e.target.files[0])
     }
+    ReactGA.event({
+      category: "Grid",
+      action: "Grid uploaded",
+    });
 
   }
 
@@ -190,6 +206,12 @@ function App() {
           className={'menuCheck'}
           type="checkbox"
           onChange={() => {
+            if (!menu) {
+              ReactGA.event({
+                category: "Menu",
+                action: "Hide Menu checked",
+              });
+            }
             setMenu(!menu)
           }} value={menu}/>
       </div>

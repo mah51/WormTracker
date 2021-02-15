@@ -5,6 +5,9 @@ import Grid from './components/Grid';
 import ExImport from "./components/ExImport";
 import ReactGA from 'react-ga';
 
+ReactGA.initialize(process.env.REACT_APP_TRACKINGID)
+ReactGA.pageview(window.location.pathname)
+
 function App() {
 
   const [imageURL, setImageURL] = useState('https://cdn.discordapp.com/attachments/698573610012639302/809945399740727307/dsBuffer.bmp.png')

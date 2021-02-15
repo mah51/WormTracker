@@ -5,9 +5,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
-import ReactGA from 'react-ga';
 
-ReactGA.initialize(process.env.REACT_APP_TRACKINGID)
+
+
 
 ReactDOM.render(
   <React.StrictMode>

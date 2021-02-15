@@ -10,7 +10,7 @@ A website built using react that allows the user to load an image and overlay a 
 
 <img src="/screenshots/2.png"  width="40%">
 <img src="/screenshots/3.png" width="40%">
-![Discord](/screenshots/4.png)
+<img src="/screenshots/4.png" width="40%">
 
 3. Set X and Y start points with the sliders, then set height and width to range in the grid
 4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed on the right.

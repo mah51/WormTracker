@@ -18,12 +18,13 @@ function Grid({imageURL, heightGrid, widthGrid, yGrid, xGrid, table, handleGridC
       }
     >
       {
-        table.map(row => {
+        table.map((row, index) => {
+
           return (
-            <tr key={row.rNum}>
+            <tr key={index + 'r'}>
               {
-                row.cells.map(cell => {
-                  return <td key={`${row.rNum}:${cell.cNum}`} style={{ opacity: '10%', backgroundColor: cell.sel ? 'green' : 'red'}} onClick={() => handleGridClick(row.rNum, cell.cNum)} />
+                row.map((cell, cindex) => {
+                  return <td key={`${index}:${cindex}`} style={{ opacity: '10%', backgroundColor: cell ? 'green' : 'red'}} onClick={() => handleGridClick(index, cindex)} />
                 })
               }
             </tr>

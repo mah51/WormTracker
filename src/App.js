@@ -18,17 +18,38 @@ function App() {
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
-      const tables = [];
-      for ( let i = 0; i < 11; i++) {
+      const data = []
+      for (let i = 0; i < 11; i ++) {
         const rowArray = [];
         for (let j = 0; j < 11; j++) {
-          rowArray.push({sel: false, cNum: j})
+          rowArray.push(false);
         }
-        tables.push({rNum: i, cells: rowArray})
+        data.push(rowArray)
       }
-      setTable(tables)
+
+      setTable(data)
     }
   },[table, imageURL])
+
+  function getCount(array) {
+    /* Flattens 2D array -> filters all true elements and gets the length */
+    return array.flat().filter(cell => cell === true).length
+  }
+
+  function getImport(data) {
+    try {
+      const parsedData = JSON.parse(data)
+      setXGrid(parsedData.grid.x)
+      setYGrid(parsedData.grid.y)
+      setHeightGrid(parsedData.grid.height)
+      setWidthGrid(parsedData.grid.width)
+      setTable(parsedData.table)
+      setCount(getCount(parsedData.table))
+    } catch(e) {
+      alert(`Couldn't parse the provided data :(`)
+    }
+
+  }
 
   function handleGridXChange(event, value) {
     setXGrid(value)
@@ -52,14 +73,37 @@ function App() {
     }
   }
 
-  function handleGridClick(rowNumber, cellNumber) {
-    table[rowNumber].cells[cellNumber].sel = !table[rowNumber].cells[cellNumber].sel;
-    setTable([...table]);
-    const increment =  table[rowNumber].cells[cellNumber].sel ? 1 : -1;
-    setCount(count + increment  );
+  async function handleGridClick(rowNumber, cellNumber) {
+    table[rowNumber][cellNumber] = !table[rowNumber][cellNumber];
+    /* I have to set table data into a new array using the spread operator to ensure the dom updates */
+    setTable([...table] );
+    setCount( getCount(table) );
+  }
+  function handleCopy(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(
+      JSON.stringify(
+        {
+          "grid": {
+            "x": xGrid,
+            "y": yGrid,
+            "height": heightGrid,
+            "width": widthGrid
+          },
+          "table" : table
+
+        }
+      )
+    )
+      .then(() => {
+        alert('Copied settings to clipboard')
+      })
+      .catch(console.error)
   }
 
   function handleDownload(e) {
+    // Source code:
+    // https://stackoverflow.com/questions/44656610/download-a-string-as-txt-file-in-react
     e.preventDefault();
     const fileName = prompt('What would you like the file to be called? (Leave blank for default name)') || 'worm_grid_position'
     const element = document.createElement("a");
@@ -71,8 +115,7 @@ function App() {
           "height": heightGrid,
           "width": widthGrid
         },
-        "rows" : table,
-        "count": count
+        "table" : table
 
       }
     )], {type: 'text/plain'});
@@ -86,17 +129,7 @@ function App() {
     e.preventDefault();
     const data = prompt('Please paste previously copied data');
     if (!data) return;
-    try{
-      const parsedData = JSON.parse(data)
-      setXGrid(parsedData.grid.x)
-      setYGrid(parsedData.grid.y)
-      setHeightGrid(parsedData.grid.height)
-      setWidthGrid(parsedData.grid.width)
-      setTable(parsedData.rows)
-      setCount(parsedData.count)
-    } catch(e) {
-      alert('The data you provided could not be parsed.')
-    }
+    getImport(data);
   }
 
   function handleUpload(e) {
@@ -104,18 +137,7 @@ function App() {
     const reader = new FileReader()
     reader.onload = async (e) => {
       const data = e.target.result
-      try {
-        const parsedData = JSON.parse(data)
-        setXGrid(parsedData.grid.x)
-        setYGrid(parsedData.grid.y)
-        setHeightGrid(parsedData.grid.height)
-        setWidthGrid(parsedData.grid.width)
-        setTable(parsedData.rows)
-        setCount(count)
-      } catch(e) {
-        console.log(e)
-        alert('Could not parse provided file.')
-      }
+      getImport(data);
     };
     if (e.target.files[0]) {
       reader.readAsText(e.target.files[0])
@@ -184,7 +206,9 @@ function App() {
                 handleDownload={handleDownload}
                 handlePaste={handlePaste}
                 handleUpload={handleUpload}
+                handleCopy={handleCopy}
                 count={count}
+
               />
               <div className="footer">
                 <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. </p>

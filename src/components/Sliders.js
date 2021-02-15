@@ -62,8 +62,8 @@ function Sliders({setTable, setCount, setXGrid, setYGrid, setWidthGrid, setHeigh
               setCount(0);
               setXGrid(0);
               setYGrid(0);
-              setWidthGrid(50);
-              setHeightGrid(50);
+              setWidthGrid(54);
+              setHeightGrid(54);
               e.preventDefault();
             }}>Reset Grid</Button>
         </div>

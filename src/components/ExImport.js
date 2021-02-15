@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 
-function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, handlePaste, handleUpload, count}) {
+function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, handlePaste, handleUpload, count, handleCopy}) {
   return (
     <div style={{marginTop: '20px'}} className="exportContainer">
       <p className={'importLabel'}>Import / Export Grid selection and position:</p>
@@ -8,28 +8,7 @@ function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, h
         <Button
           className={'copyButton'}
           variant={'info'}
-          onClick={(e) =>  {
-            e.preventDefault();
-            navigator.clipboard.writeText(
-              JSON.stringify(
-                {
-                  "grid": {
-                    "x": xGrid,
-                    "y": yGrid,
-                    "height": heightGrid,
-                    "width": widthGrid
-                  },
-                  "rows" : table,
-                  "count": count
-
-                }
-              )
-            )
-              .then(() => {
-                alert('Copied settings to clipboard')
-              })
-              .catch(console.error)
-          }}
+          onClick={(e) => handleCopy(e)}
         >Copy grid position</Button>
         <Button
           className="pasteButton"

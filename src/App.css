@@ -19,11 +19,17 @@ table, th, td {
   position: absolute;
 }
 
-.footer>p{
+.footer>p {
   color: slategray;
   font-size: 1.5vh;
   text-align: center;
 }
+
+.footer>p:first-child{
+
+  font-weight:500;
+}
+
 
 
 

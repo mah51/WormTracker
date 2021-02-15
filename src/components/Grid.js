@@ -17,22 +17,23 @@ function Grid({imageURL, heightGrid, widthGrid, yGrid, xGrid, table, handleGridC
         }
       }
     >
-      {
-        table.map((row, index) => {
+        <tbody>
+          {
+            table.map((row, index) => {
 
-          return (
-            <tr key={index + 'r'}>
-              {
-                row.map((cell, cindex) => {
-                  return <td key={`${index}:${cindex}`} style={{ opacity: '10%', backgroundColor: cell ? 'green' : 'red'}} onClick={() => handleGridClick(index, cindex)} />
-                })
-              }
-            </tr>
-          )
+              return (
+                <tr key={index + 'r'}>
+                  {
+                    row.map((cell, cindex) => {
+                      return <td key={`${index}:${cindex}`} style={{ opacity: '10%', backgroundColor: cell ? 'green' : 'red'}} onClick={() => handleGridClick(index, cindex)} />
+                    })
+                  }
+                </tr>
+              )
 
-        })
-      }
-
+            })
+          }
+        </tbody>
     </table>
   </div>
   )

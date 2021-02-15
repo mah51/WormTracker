@@ -26,7 +26,7 @@ function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, h
           onClick={(e) =>  handleDownload(e)}
 
         >Download grid data</Button>
-        <input style={{display: 'none'}} type={"file"} id={'files'} onChange={(e) => handleUpload(e)} />
+        <input style={{display: 'none'}} type={"file"} id={'files'} accept={'.txt'} onChange={(e) => handleUpload(e)} />
         <label className={'btn btn-info uploadButton'} htmlFor="files">Upload grid data</label>
       </div>
 

@@ -5,7 +5,17 @@ import Grid from './components/Grid';
 import ExImport from "./components/ExImport";
 import ReactGA from 'react-ga';
 
+import publicIp from "public-ip";
+
+export const getClientIp = async () => await publicIp.v4({
+  fallbackUrls: [ "https://ifconfig.co/ip" ]
+});
+
 ReactGA.initialize(process.env.REACT_APP_TRACKINGID)
+const userIP = getClientIp()
+ReactGA.set({
+  userIP,
+})
 ReactGA.pageview(window.location.pathname)
 
 function App() {

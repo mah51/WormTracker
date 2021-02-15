@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Sliders from './components/Sliders'
 import Grid from './components/Grid';
 import ExImport from "./components/ExImport";
+import ReactGA from 'react-ga';
 
 function App() {
 
@@ -59,6 +60,11 @@ function App() {
     /* I have to set table data into a new array using the spread operator to ensure the dom updates */
     setTable([...table] );
     setCount( getCount(table) );
+    ReactGA.event({
+      category: "Grid click",
+      action: "User clicked a grid!",
+    });
+
   }
   function handleCopy(e) {
     e.preventDefault();

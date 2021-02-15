@@ -49,7 +49,7 @@ function Sliders({
       <p className={'slider-label'}>Change the grid:</p>
         <ThemeProvider theme={theme}>
           <p className={'slider-label'}>Opacity</p>
-          <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={1} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
+          <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={0.9} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
           <p className={'slider-label'}>X</p>
           <Slider value={xGrid} color={'secondary'} step={0.1} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
           <p className={'slider-label'}>Y</p>

@@ -7,14 +7,19 @@ A website built using react that allows the user to load an image and overlay a 
 
 1. Make sure image is in a web useable format (jpg, jpeg, png etc. (not TIFF)). Most websites can convert these, there are plenty of websites that can do this for you; or you can go into paint and save as png)
 2. Upload picture to some public webserver, in my examples I send my pictures on a discord channel and copy the link and paste it into the image link text box on the website.
-![Discord](/screenshots/2.png) ![Discord](/screenshots/3.png) ![Discord](/screenshots/4.png)
 
-3. Set X and Y start points with the sliders, then set height and width to range in the grid
-4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed on the right.
+<img src="/screenshots/2.png"  width="40%">
+<img src="/screenshots/3.png" width="40%">
+<img src="/screenshots/4.png" width="40%">
 
-N.B. The Grid can only be altered if the browser window is over 700px tall, this is to prevent the overlapping of the controls with the grid when zooming in. My CSS skills suck but I will try to fix this soon!
+3. Set X and Y start points with the sliders, then set height and width to adjust the other 2 sides of the grid
+4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed in the menu.
 
-This code is [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
+If you are zoomed in the menu can cause formatting issues, so it automatically dissapears once you are too zoomed in. If it gets in the way before it dissapears hit the 'hide menu' button to close it and deselect to re-open.
+
+To use this website you have to make sure the height of your browser is over 700px, sorry phone users! (but there's no saving you if you're using a phone to count worm tracks)
+
+This code is Open-source under [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
 
 ![Screenshot of website](/screenshots/1.png)
 

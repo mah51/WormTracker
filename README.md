@@ -12,12 +12,14 @@ A website built using react that allows the user to load an image and overlay a 
 <img src="/screenshots/3.png" width="40%">
 <img src="/screenshots/4.png" width="40%">
 
-3. Set X and Y start points with the sliders, then set height and width to range in the grid
-4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed on the right.
+3. Set X and Y start points with the sliders, then set height and width to adjust the other 2 sides of the grid
+4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed in the menu.
 
-N.B. The Grid can only be altered if the browser window is over 700px tall, this is to prevent the overlapping of the controls with the grid when zooming in. My CSS skills suck but I will try to fix this soon!
+If you are zoomed in the menu can cause formatting issues, so it automatically dissapears once you are too zoomed in. If it gets in the way before it dissapears hit the 'hide menu' button to close it and deselect to re-open.
 
-This code is [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
+To use this website you have to make sure the height of your browser is over 700px, sorry phone users! (but there's no saving you if you're using a phone to count worm tracks)
+
+This code is Open-source under [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
 
 ![Screenshot of website](/screenshots/1.png)
 

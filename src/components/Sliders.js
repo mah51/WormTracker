@@ -103,6 +103,7 @@ function Sliders({
             onClick={(e) => {
               setTable([]);
               setCount(0);
+              setGridOpacity(0.1);
               setXGrid(0);
               setYGrid(0);
               setWidthGrid(54);

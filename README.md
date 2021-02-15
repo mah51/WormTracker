@@ -15,6 +15,7 @@ A website built using react that allows the user to load an image and overlay a 
 3. Set X and Y start points with the sliders, then set height and width to adjust the other 2 sides of the grid
 4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed in the menu.
 
+I would recommend zooming in, on chrome you can do this with CTRL (windows) / CMD (mac) + Scroll Up / +. Once zoomed in you can navigate round with the scroll bars or the scroll or Shift + scroll for vertical and horizontal scrolling respectively. 
 If you are zoomed in the menu can cause formatting issues, so it automatically dissapears once you are too zoomed in. If it gets in the way before it dissapears hit the 'hide menu' button to close it and deselect to re-open.
 
 To use this website you have to make sure the height of your browser is over 700px, sorry phone users! (but there's no saving you if you're using a phone to count worm tracks)

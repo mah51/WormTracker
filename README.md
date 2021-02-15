@@ -8,8 +8,8 @@ A website built using react that allows the user to load an image and overlay a 
 1. Make sure image is in a web useable format (jpg, jpeg, png etc. (not TIFF)). Most websites can convert these, there are plenty of websites that can do this for you; or you can go into paint and save as png)
 2. Upload picture to some public webserver, in my examples I send my pictures on a discord channel and copy the link and paste it into the image link text box on the website.
 
-<img src="/screenshots/2.png"  width="100">
-<img src="/screenshots/3.png" width="100">
+<img src="/screenshots/2.png"  width="40%">
+<img src="/screenshots/3.png" width="40%">
 ![Discord](/screenshots/4.png)
 
 3. Set X and Y start points with the sliders, then set height and width to range in the grid

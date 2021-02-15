@@ -15,6 +15,7 @@ function App() {
   const [widthGrid, setWidthGrid] = useState(54);
   const [checkbox, setCheckbox] = useState(false);
   const [menu, setMenu] = useState(true);
+  const [gridOpacity, setGridOpacity] = useState(0.1);
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
@@ -29,7 +30,7 @@ function App() {
 
       setTable(data)
     }
-  },[table, imageURL])
+  },[table, imageURL, gridOpacity])
 
   function getCount(array) {
     /* Flattens 2D array -> filters all true elements and gets the length */
@@ -51,27 +52,7 @@ function App() {
 
   }
 
-  function handleGridXChange(event, value) {
-    setXGrid(value)
-  }
 
-  function handleGridYChange(event, value) {
-    setYGrid(value)
-  }
-
-  function handleGridHeightChange(event, value) {
-    setHeightGrid(value)
-    if (checkbox) {
-      setWidthGrid(value)
-    }
-  }
-
-  function handleGridWidthChange(event, value) {
-    setWidthGrid(value)
-    if (checkbox) {
-      setHeightGrid(value)
-    }
-  }
 
   async function handleGridClick(rowNumber, cellNumber) {
     table[rowNumber][cellNumber] = !table[rowNumber][cellNumber];
@@ -145,6 +126,52 @@ function App() {
 
   }
 
+  const gridProps = {
+    imageURL,
+    handleGridClick,
+    heightGrid,
+    widthGrid,
+    yGrid,
+    xGrid,
+    table,
+    gridOpacity
+  }
+
+  const sliderProps = {
+    setTable,
+    setCount,
+    setXGrid,
+    setYGrid,
+    count,
+    imageURL,
+    setImageURL,
+    xGrid,
+    yGrid,
+    heightGrid,
+    setHeightGrid,
+    widthGrid,
+    setWidthGrid,
+    gridOpacity,
+    setGridOpacity,
+    checkbox,
+    setCheckbox,
+    menu,
+    setMenu,
+  }
+
+  const exImportProps = {
+    xGrid,
+    yGrid,
+    heightGrid,
+    widthGrid,
+    table,
+    handleDownload,
+    handlePaste,
+    handleUpload,
+    handleCopy,
+    count,
+  }
+
   return (
     <>
       <div className="menuCheckContainer">
@@ -159,57 +186,13 @@ function App() {
       </div>
       <div className="contain">
         <div className="imageContainer">
-          <Grid
-            imageURL={imageURL}
-            handleGridClick={handleGridClick}
-            heightGrid={heightGrid}
-            widthGrid={widthGrid}
-            yGrid={yGrid}
-            xGrid={xGrid}
-            table={table}
-
-          />
+          <Grid {...gridProps} />
         </div>
         {
           menu ? (
             <div className="formContainer" >
-              <Sliders
-                setTable={setTable}
-                setCount={setCount}
-                setXGrid={setXGrid}
-                setYGrid={setYGrid}
-                setWidthGrid={setWidthGrid}
-                setHeightGrid={setHeightGrid}
-                count={count}
-                imageURL={imageURL}
-                setImageURL={setImageURL}
-                xGrid={xGrid}
-                handleGridXChange={handleGridXChange}
-                yGrid={yGrid}
-                handleGridYChange={handleGridYChange}
-                heightGrid={heightGrid}
-                handleGridHeightChange={handleGridHeightChange}
-                widthGrid={widthGrid}
-                handleGridWidthChange={handleGridWidthChange}
-                checkbox={checkbox}
-                setCheckbox={setCheckbox}
-                menu={menu}
-                setMenu={setMenu}
-              />
-              <ExImport
-
-                xGrid={xGrid}
-                yGrid={yGrid}
-                heightGrid={heightGrid}
-                widthGrid={widthGrid}
-                table={table}
-                handleDownload={handleDownload}
-                handlePaste={handlePaste}
-                handleUpload={handleUpload}
-                handleCopy={handleCopy}
-                count={count}
-
-              />
+              <Sliders {...sliderProps} />
+              <ExImport {...exImportProps} />
               <div className="footer">
                 <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a>. </p>
                 <p>For instructions on how to use this tool, reporting issues, and viewing the code:  <a href={'https://github.com/mah51/WormTracker'}>WormTracker Repo</a></p>

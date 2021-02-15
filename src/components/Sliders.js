@@ -19,7 +19,25 @@ const theme = createMuiTheme({
   },
 });
 
-function Sliders({setTable, setCount, setXGrid, setYGrid, setWidthGrid, setHeightGrid, count, imageURL, setImageURL, xGrid, handleGridXChange, yGrid, handleGridYChange, heightGrid, handleGridHeightChange, widthGrid, handleGridWidthChange, checkbox, setCheckbox}) {
+function Sliders({
+                   setTable,
+                   setCount,
+                   setXGrid,
+                   setYGrid,
+                   setWidthGrid,
+                   setHeightGrid,
+                   count,
+                   imageURL,
+                   setImageURL,
+                   xGrid,
+                   yGrid,
+                   heightGrid,
+                   widthGrid,
+                   checkbox,
+                   setCheckbox,
+                   gridOpacity,
+                   setGridOpacity,
+}) {
   return (
     <form >
       <h1 className={'title'}>WormTracker v1.0</h1>
@@ -28,16 +46,41 @@ function Sliders({setTable, setCount, setXGrid, setYGrid, setWidthGrid, setHeigh
       <h3 className={'imageTitle'}>Image link:</h3>
       <input className={'imageLink'} type="text" placeholder={imageURL} onChange={(e) => setImageURL(e.target.value) }/>
 
-      <p className={'slider-label'}>Move the grid:</p>
+      <p className={'slider-label'}>Change the grid:</p>
         <ThemeProvider theme={theme}>
-        <p className={'slider-label'}>X</p>
-        <Slider value={xGrid} color={'secondary'} step={0.1} onChange={handleGridXChange} aria-labelledby="continuous-slider" />
-        <p className={'slider-label'}>Y</p>
-        <Slider value={yGrid} color={'secondary'} step={0.1}  onChange={handleGridYChange} aria-labelledby="continuous-slider" />
-        <p className={'slider-label'}>Height</p>
-        <Slider value={heightGrid} color={'secondary'} onChange={handleGridHeightChange} min={10} max={90} step={0.1}  aria-labelledby="continuous-slider" />
-        <p className={'slider-label'}>Width</p>
-        <Slider value={widthGrid} color={'secondary'} onChange={handleGridWidthChange} min={10} max={90} step={0.1} aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Opacity</p>
+          <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={1} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>X</p>
+          <Slider value={xGrid} color={'secondary'} step={0.1} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Y</p>
+          <Slider value={yGrid} color={'secondary'} step={0.1}  onChange={(event, value) => setYGrid(value)} aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Height</p>
+          <Slider
+            value={heightGrid}
+            color={'secondary'}
+            onChange={(event, value) => {
+              setHeightGrid(value)
+              if (checkbox) {
+                setWidthGrid(value)
+              }
+            }}
+            min={10}
+            max={90}
+            step={0.1}
+            aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Width</p>
+          <Slider
+            value={widthGrid} color={'secondary'}
+            onChange={(event, value) => {
+            setWidthGrid(value)
+            if (checkbox) {
+              setHeightGrid(value)
+            }
+            }}
+            min={10}
+            max={90}
+            step={0.1}
+            aria-labelledby="continuous-slider" />
         </ThemeProvider>
 
 

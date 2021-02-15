@@ -1,4 +1,13 @@
-function Grid({imageURL, heightGrid, widthGrid, yGrid, xGrid, table, handleGridClick }) {
+function Grid({
+  imageURL,
+  heightGrid,
+  widthGrid,
+  yGrid,
+  xGrid,
+  table,
+  handleGridClick,
+  gridOpacity,
+              }) {
   return (
     <div>
       <img
@@ -7,6 +16,7 @@ function Grid({imageURL, heightGrid, widthGrid, yGrid, xGrid, table, handleGridC
         alt="There doesn't seem to be anything here :/"
       />
       <table
+
       className={"grid"}
       style={
         {
@@ -25,7 +35,7 @@ function Grid({imageURL, heightGrid, widthGrid, yGrid, xGrid, table, handleGridC
                 <tr key={index + 'r'}>
                   {
                     row.map((cell, cindex) => {
-                      return <td key={`${index}:${cindex}`} style={{ opacity: '10%', backgroundColor: cell ? 'green' : 'red'}} onClick={() => handleGridClick(index, cindex)} />
+                      return <td key={`${index}:${cindex}`} style={{ opacity: gridOpacity, backgroundColor: cell ? 'green' : 'red'}} onClick={() => handleGridClick(index, cindex)} />
                     })
                   }
                 </tr>

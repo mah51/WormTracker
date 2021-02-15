@@ -7,15 +7,23 @@ import ReactGA from 'react-ga';
 
 import publicIp from "public-ip";
 
+
 export const getClientIp = async () => await publicIp.v4({
   fallbackUrls: [ "https://ifconfig.co/ip" ]
 });
-
+console.log('connecting from ' + getClientIp())
 ReactGA.initialize(process.env.REACT_APP_TRACKINGID)
-const userIP = getClientIp()
-ReactGA.set({
-  userIP,
-})
+getClientIp()
+  .then(userIP => {
+    console.log(userIP)
+    ReactGA.set({
+      userIP,
+    })
+  })
+  .catch(e => {
+    ReactGA.exception({description:'IP find failed', fatal: false})
+  })
+
 ReactGA.pageview(window.location.pathname)
 
 function App() {

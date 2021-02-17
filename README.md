@@ -14,7 +14,7 @@ N.B On the web version of discord you need to click 'copy image address'.
 <img src="/screenshots/3.png" width="40%">
 <img src="/screenshots/4.png" width="40%">
 
-3. Set X and Y start points with the sliders, then set height and width to adjust the other 2 sides of the grid
+3. Set the each side of the grid with the respective sliders in the menu.
 4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed in the menu.
 
 I would recommend zooming in, on chrome you can do this with CTRL (windows) / CMD (mac) + Scroll Up / +. Once zoomed in you can navigate round with the scroll bars or the scroll or Shift + scroll for vertical and horizontal scrolling respectively. 

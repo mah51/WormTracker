@@ -20,10 +20,10 @@ function Grid({
       className={"grid"}
       style={
         {
-          height: ( (heightGrid * 20) - (yGrid *4)  ).toString() + 'px',
-          width: ( (widthGrid * 20) - (xGrid *4) ).toString() + 'px',
-          top: ( yGrid.toString() * 10 ) + 'px',
-          left: ( xGrid.toString()* 10 ) + 'px',
+          height: ( (heightGrid * 15) - (yGrid *5)  ).toString() + 'px',
+          width: ( (widthGrid * 15) - (xGrid *5) ).toString() + 'px',
+          top: ( yGrid.toString() * 5 ) + 'px',
+          left: ( xGrid.toString()* 5 ) + 'px',
         }
       }
     >

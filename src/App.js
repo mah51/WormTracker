@@ -33,8 +33,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [xGrid, setXGrid] = useState(0);
   const [yGrid, setYGrid] = useState(0);
-  const [heightGrid, setHeightGrid] = useState(54);
-  const [widthGrid, setWidthGrid] = useState(54);
+  const [heightGrid, setHeightGrid] = useState(70);
+  const [widthGrid, setWidthGrid] = useState(70);
   const [checkbox, setCheckbox] = useState(false);
   const [menu, setMenu] = useState(true);
   const [gridOpacity, setGridOpacity] = useState(0.1);

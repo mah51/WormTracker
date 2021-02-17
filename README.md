@@ -6,7 +6,9 @@ A website built using react that allows the user to load an image and overlay a 
 ### How to use:
 
 1. Make sure image is in a web usable format (jpg, jpeg, png etc. (not TIFF)). Most websites can convert these, there are plenty of websites that can do this for you or you can go into paint and save as png; (you can screenshot the image, but may affect image quality when zoomed) 
-2. Upload picture to some public web server, in my examples I send my pictures on a discord channel and copy the link and paste it into the image link text box on the website.
+2. Upload picture to some public web server, in my examples I send my pictures on a discord channel and copy the link and paste it into the image link text box on the website. If you don't know about discord it is a messaging service, and you can create an account [here](https://discord.com). You can create a server using the plus sign in the left column and send images as shown in the screenshots below. 
+
+N.B On the web version of discord you need to click 'copy image address'.
 
 <img src="/screenshots/2.png"  width="40%">
 <img src="/screenshots/3.png" width="40%">

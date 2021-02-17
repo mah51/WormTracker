@@ -9,7 +9,7 @@ function ExImport({xGrid, yGrid, heightGrid, widthGrid, table, handleDownload, h
           className={'copyButton'}
           variant={'info'}
           onClick={(e) => handleCopy(e)}
-        >Copy grid position</Button>
+        >Copy grid data</Button>
         <Button
           className="pasteButton"
           variant="info"

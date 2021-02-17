@@ -56,13 +56,9 @@ function Sliders({
 
       <p className={'slider-label'}>Change the grid:</p>
         <ThemeProvider theme={theme}>
-          <p className={'slider-label'}>Opacity</p>
-          <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={0.9} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
-          <p className={'slider-label'}>X</p>
-          <Slider value={xGrid} color={'secondary'} step={0.1} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
-          <p className={'slider-label'}>Y</p>
+          <p className={'slider-label'}>Top</p>
           <Slider value={yGrid} color={'secondary'} step={0.1}  onChange={(event, value) => setYGrid(value)} aria-labelledby="continuous-slider" />
-          <p className={'slider-label'}>Height</p>
+          <p className={'slider-label'}>Bottom</p>
           <Slider
             value={heightGrid}
             color={'secondary'}
@@ -76,7 +72,10 @@ function Sliders({
             max={90}
             step={0.1}
             aria-labelledby="continuous-slider" />
-          <p className={'slider-label'}>Width</p>
+          <p className={'slider-label'}>Left</p>
+          <Slider value={xGrid} color={'secondary'} step={0.1} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
+
+          <p className={'slider-label'}>Right</p>
           <Slider
             value={widthGrid} color={'secondary'}
             onChange={(event, value) => {
@@ -89,6 +88,8 @@ function Sliders({
             max={90}
             step={0.1}
             aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Opacity</p>
+          <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={0.9} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
         </ThemeProvider>
 
 
@@ -111,6 +112,14 @@ function Sliders({
         <span className="checkmark"/>
       </div>
         <div className="resetContainer">
+          <Button
+            className={'resetGrid'}
+            variant={'info'}
+            onClick={(e) => {
+              setCount(0);
+              setTable([]);
+              e.preventDefault();
+            }}>Reset Count</Button>
           <Button
             className={'resetGrid'}
             variant={'info'}

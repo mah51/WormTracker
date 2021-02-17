@@ -38,7 +38,7 @@ table, th, td {
   text-underline-style: none;
 }
 
-.copyButtons {
+.copyButtons, .fileButtons, .resetContainer {
   display:flex;
   justify-content: space-between;
   width: 18vw;
@@ -46,10 +46,7 @@ table, th, td {
 }
 
 .fileButtons {
-  display:flex;
-  justify-content: space-between;
-  width: 18vw;
-  margin: 1vh auto 2vh auto;
+  margin-bottom: 2vh;
 }
 
 .imageLink {
@@ -118,7 +115,6 @@ html, body {margin: 0; height: 100%;}
 .resetGrid {
   background-color: #f287a8 ;
   border-color: #f287a8 ;
-  width: 6vw;
 }
 .resetGrid:hover {
   background-color: #bd5779 ;

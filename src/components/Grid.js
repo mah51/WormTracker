@@ -6,7 +6,7 @@ function Grid({
   xGrid,
   table,
   handleGridClick,
-  gridOpacity,
+  gridOpacity
               }) {
   return (
     <div>
@@ -20,10 +20,10 @@ function Grid({
       className={"grid"}
       style={
         {
-          height: ( (heightGrid * 15) - (yGrid *5)  ).toString() + 'px',
-          width: ( (widthGrid * 15) - (xGrid *5) ).toString() + 'px',
-          top: ( yGrid.toString() * 5 ) + 'px',
-          left: ( xGrid.toString()* 5 ) + 'px',
+          height: ( heightGrid  ).toString() + 'px',
+          width: ( widthGrid  ).toString() + 'px',
+          top: ( yGrid.toString() ) + 'px',
+          left: ( xGrid.toString() ) + 'px',
         }
       }
     >

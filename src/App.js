@@ -38,6 +38,38 @@ function App() {
   const [checkbox, setCheckbox] = useState(false);
   const [menu, setMenu] = useState(true);
   const [gridOpacity, setGridOpacity] = useState(0.1);
+  const [inAutoGrid, setInAutoGrid] = useState(false);
+  const [autoGridText, setAutoGridText] = useState(null);
+
+  function activateAutoGrid(e) {
+    setInAutoGrid(0);
+    setAutoGridText('Setting top bound');
+  }
+
+  function handleClick(e) {
+    switch (inAutoGrid) {
+      case 0:
+        setYGrid(e.pageY)
+        setInAutoGrid(1)
+        setAutoGridText('Setting left bound');
+        break;
+      case 1:
+        setXGrid(e.pageX);
+        setInAutoGrid(2);
+        setAutoGridText('Setting bottom bound');
+        break;
+      case 2:
+        setInAutoGrid(3);
+        setHeightGrid(e.pageY-yGrid);
+        setAutoGridText('Setting right bound');
+        break;
+      case 3:
+        setWidthGrid(e.pageX - xGrid);
+        setInAutoGrid(false);
+        setAutoGridText(null);
+        break;
+    }
+  }
 
   useEffect(() => {
     if (imageURL && table.length === 0) {
@@ -52,7 +84,7 @@ function App() {
 
       setTable(data)
     }
-  },[table, imageURL, gridOpacity])
+  },[table, imageURL, gridOpacity, autoGridText])
 
   function getCount(array) {
     /* Flattens 2D array -> filters all true elements and gets the length */
@@ -77,15 +109,18 @@ function App() {
 
 
   async function handleGridClick(rowNumber, cellNumber) {
-    table[rowNumber][cellNumber] = !table[rowNumber][cellNumber];
-    /* I have to set table data into a new array using the spread operator to ensure the dom updates */
-    setTable([...table] );
-    setCount( getCount(table) );
-    ReactGA.event({
-      category: "Grid",
-      action: "Grid square clicked",
-    });
-
+    if (inAutoGrid === false) {
+      table[rowNumber][cellNumber] = !table[rowNumber][cellNumber];
+      /* I have to set table data into a new array using the spread operator to ensure the dom updates */
+      setTable([...table] );
+      setCount( getCount(table) );
+      ReactGA.event({
+        category: "Grid",
+        action: "Grid square clicked",
+      });
+    } else {
+      console.log('In autogrid, ignoring grid click!')
+    }
   }
   function handleCopy(e) {
     e.preventDefault();
@@ -200,6 +235,9 @@ function App() {
     setCheckbox,
     menu,
     setMenu,
+    inAutoGrid,
+    activateAutoGrid,
+    autoGridText
   }
 
   const exImportProps = {
@@ -233,7 +271,7 @@ function App() {
             setMenu(!menu)
           }} value={menu}/>
       </div>
-      <div className="contain">
+      <div className="contain" onClick={(e) => handleClick(e)}>
         <div className="imageContainer">
           <Grid {...gridProps} />
         </div>

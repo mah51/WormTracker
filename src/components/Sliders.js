@@ -39,6 +39,9 @@ function Sliders({
                    setCheckbox,
                    gridOpacity,
                    setGridOpacity,
+                   activateAutoGrid,
+                   inAutoGrid,
+                   autoGridText,
 }) {
   return (
     <form >
@@ -54,7 +57,19 @@ function Sliders({
         setImageURL(e.target.value)
       } }/>
 
-      <p className={'slider-label'}>Change the grid:</p>
+
+      <p className={'slider-label'} style={{marginBottom: '1vh'}}>Change the grid:</p>
+      <Button
+        className={'autoGrid'}
+        variant={'info'}
+        style={{marginBottom: '1vh'}}
+        onClick={(e) => {
+          if (inAutoGrid === false) {
+            activateAutoGrid();
+          } else {
+            alert('AutoGrid is already active...')
+          }
+        }}>{autoGridText || 'Auto Grid'}</Button>
         <ThemeProvider theme={theme}>
           <p className={'slider-label'}>Top</p>
           <Slider value={yGrid} color={'secondary'} step={1} max={500} onChange={(event, value) => setYGrid(value)} aria-labelledby="continuous-slider" />
@@ -106,7 +121,12 @@ function Sliders({
               action: "Square grid enabled",
             });
           }
-          setWidthGrid(heightGrid)
+          if (widthGrid > heightGrid) {
+            setHeightGrid(widthGrid)
+          } else {
+            setWidthGrid(heightGrid)
+          }
+
           setCheckbox(!checkbox)
         }} value={checkbox}/>
         <span className="checkmark"/>

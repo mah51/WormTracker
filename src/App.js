@@ -61,11 +61,11 @@ function App() {
         break;
       case 2:
         setInAutoGrid(3);
-        setHeightGrid(e.pageY - yGrid);
+        setHeightGrid(e.pageY);
         setAutoGridText('Setting right bound');
         break;
       case 3:
-        setWidthGrid(e.pageX - xGrid);
+        setWidthGrid(e.pageX);
         setInAutoGrid(false);
         setAutoGridText(null);
         break;

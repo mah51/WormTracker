@@ -8,13 +8,13 @@ A website built using react that allows the user to load an image and overlay a 
 1. Make sure image is in a web usable format (jpg, jpeg, png etc. (not TIFF)). Most websites can convert these, there are plenty of websites that can do this for you or you can go into paint and save as png; (you can screenshot the image, but may affect image quality when zoomed) 
 2. Upload picture to some public web server, in my examples I send my pictures on a discord channel and copy the link and paste it into the image link text box on the website. If you don't know about discord it is a messaging service, and you can create an account [here](https://discord.com). You can create a server using the plus sign in the left column and send images as shown in the screenshots below. 
 
-N.B On the web version of discord you need to click 'copy image address'.
+N.B On the web version of discord you need to click 'copy image address', do not left click the image first as this will make the image too small.
 
 <img src="/screenshots/2.png"  width="40%">
 <img src="/screenshots/3.png" width="40%">
 <img src="/screenshots/4.png" width="40%">
 
-3. Set the each side of the grid with the respective sliders in the menu.
+3. Set the each side of the grid with the respective sliders in the menu or click the 'AutoGrid' button, which will then instruct you to click the tallest part of the circle, followed by the left, bottom, and right side.
 4. Click squares with worm tracks in, they will change to green. Note, a count of squares is displayed in the menu.
 
 I would recommend zooming in, on chrome you can do this with CTRL (windows) / CMD (mac) + Scroll Up / +. Once zoomed in you can navigate round with the scroll bars or the scroll or Shift + scroll for vertical and horizontal scrolling respectively. 

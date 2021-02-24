@@ -33,8 +33,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [xGrid, setXGrid] = useState(0);
   const [yGrid, setYGrid] = useState(0);
-  const [heightGrid, setHeightGrid] = useState(1050);
-  const [widthGrid, setWidthGrid] = useState(1050);
+  const [heightGrid, setHeightGrid] = useState(950);
+  const [widthGrid, setWidthGrid] = useState(1110);
   const [checkbox, setCheckbox] = useState(false);
   const [menu, setMenu] = useState(true);
   const [gridOpacity, setGridOpacity] = useState(0.1);
@@ -47,6 +47,7 @@ function App() {
   }
 
   function handleClick(e) {
+    console.log(e)
     switch (inAutoGrid) {
       case 0:
         setYGrid(e.pageY)
@@ -60,7 +61,7 @@ function App() {
         break;
       case 2:
         setInAutoGrid(3);
-        setHeightGrid(e.pageY-yGrid);
+        setHeightGrid(e.pageY - yGrid);
         setAutoGridText('Setting right bound');
         break;
       case 3:

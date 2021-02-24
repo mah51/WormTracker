@@ -72,7 +72,7 @@ function Sliders({
         }}>{autoGridText || 'Auto Grid'}</Button>
         <ThemeProvider theme={theme}>
           <p className={'slider-label'}>Top</p>
-          <Slider value={yGrid} color={'secondary'} step={1} max={500} onChange={(event, value) => setYGrid(value)} aria-labelledby="continuous-slider" />
+          <Slider value={yGrid} color={'secondary'} step={1} max={200} onChange={(event, value) => setYGrid(value)} aria-labelledby="continuous-slider" />
           <p className={'slider-label'}>Bottom</p>
           <Slider
             value={heightGrid}
@@ -83,12 +83,12 @@ function Sliders({
                 setWidthGrid(value)
               }
             }}
-            min={150}
-            max={2250}
+            min={700}
+            max={1200}
             step={1}
             aria-labelledby="continuous-slider" />
           <p className={'slider-label'}>Left</p>
-          <Slider value={xGrid} color={'secondary'} step={1} max={500} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
+          <Slider value={xGrid} color={'secondary'} step={1} max={200} onChange={(event, value) => setXGrid(value)} aria-labelledby="continuous-slider" />
 
           <p className={'slider-label'}>Right</p>
           <Slider
@@ -99,8 +99,8 @@ function Sliders({
               setHeightGrid(value)
             }
             }}
-            min={150}
-            max={2250}
+            min={860}
+            max={1360}
             step={1}
             aria-labelledby="continuous-slider" />
           <p className={'slider-label'}>Opacity</p>

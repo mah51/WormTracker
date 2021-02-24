@@ -42,6 +42,8 @@ function Sliders({
                    activateAutoGrid,
                    inAutoGrid,
                    autoGridText,
+                   imageBrightness,
+                   setImageBrightness
 }) {
   return (
     <form >
@@ -56,9 +58,7 @@ function Sliders({
         });
         setImageURL(e.target.value)
       } }/>
-
-
-      <p className={'slider-label'} style={{marginBottom: '1vh'}}>Change the grid:</p>
+      <p className={'slider-label'}>Image name: {imageURL.split('/')[imageURL.split('/').length - 1]}</p>
       <Button
         className={'autoGrid'}
         variant={'info'}
@@ -103,7 +103,9 @@ function Sliders({
             max={1360}
             step={1}
             aria-labelledby="continuous-slider" />
-          <p className={'slider-label'}>Opacity</p>
+          <p className={'slider-label'}>Image brightness</p>
+          <Slider value={imageBrightness} color={'secondary'} step={1}  min={0} max={500} onChange={(event, value) => setImageBrightness(value)} aria-labelledby="continuous-slider" />
+          <p className={'slider-label'}>Grid opacity</p>
           <Slider value={gridOpacity} color={'secondary'} step={0.01}  min={0} max={0.9} onChange={(event, value) => setGridOpacity(value)} aria-labelledby="continuous-slider" />
         </ThemeProvider>
 
@@ -136,14 +138,6 @@ function Sliders({
             className={'resetGrid'}
             variant={'info'}
             onClick={(e) => {
-              setCount(0);
-              setTable([]);
-              e.preventDefault();
-            }}>Reset Count</Button>
-          <Button
-            className={'resetGrid'}
-            variant={'info'}
-            onClick={(e) => {
               setTable([]);
               setCount(0);
               setGridOpacity(0.1);
@@ -153,6 +147,14 @@ function Sliders({
               setHeightGrid(950);
               e.preventDefault();
             }}>Reset Grid</Button>
+          <Button
+            className={'resetGrid'}
+            variant={'info'}
+            onClick={(e) => {
+              setCount(0);
+              setTable([]);
+              e.preventDefault();
+            }}>Reset Count</Button>
         </div>
 
 

@@ -7,13 +7,15 @@ function Grid({
   table,
   handleGridClick,
   gridOpacity,
-  checkbox
+  checkbox,
+  imageBrightness
               }) {
   return (
     <div>
       <img
         className={"img"}
         src={imageURL}
+        style={{filter: `brightness(${imageBrightness}%)`}}
         alt="There doesn't seem to be anything here :/"
       />
       <table

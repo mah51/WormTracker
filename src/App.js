@@ -40,6 +40,7 @@ function App() {
   const [gridOpacity, setGridOpacity] = useState(0.1);
   const [inAutoGrid, setInAutoGrid] = useState(false);
   const [autoGridText, setAutoGridText] = useState(null);
+  const [imageBrightness, setImageBrightness] = useState(100);
 
   function activateAutoGrid(e) {
     setInAutoGrid(0);
@@ -85,7 +86,7 @@ function App() {
 
       setTable(data)
     }
-  },[table, imageURL, gridOpacity, autoGridText])
+  },[table, imageURL, gridOpacity, autoGridText, imageBrightness])
 
   function getCount(array) {
     /* Flattens 2D array -> filters all true elements and gets the length */
@@ -214,7 +215,8 @@ function App() {
     xGrid,
     table,
     gridOpacity,
-    checkbox
+    checkbox,
+    imageBrightness
   }
 
   const sliderProps = {
@@ -239,7 +241,9 @@ function App() {
     setMenu,
     inAutoGrid,
     activateAutoGrid,
-    autoGridText
+    autoGridText,
+    imageBrightness,
+    setImageBrightness
   }
 
   const exImportProps = {

@@ -20,8 +20,8 @@ function Grid({
       className={"grid"}
       style={
         {
-          height: ( heightGrid  ).toString() + 'px',
-          width: ( widthGrid  ).toString() + 'px',
+          height: ( heightGrid - yGrid ).toString() + 'px',
+          width: ( widthGrid - xGrid ).toString() + 'px',
           top: ( yGrid.toString() ) + 'px',
           left: ( xGrid.toString() ) + 'px',
         }

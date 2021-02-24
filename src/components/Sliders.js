@@ -149,8 +149,8 @@ function Sliders({
               setGridOpacity(0.1);
               setXGrid(0);
               setYGrid(0);
-              setWidthGrid(54);
-              setHeightGrid(54);
+              setWidthGrid(1110);
+              setHeightGrid(950);
               e.preventDefault();
             }}>Reset Grid</Button>
         </div>

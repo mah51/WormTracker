@@ -213,7 +213,8 @@ function App() {
     yGrid,
     xGrid,
     table,
-    gridOpacity
+    gridOpacity,
+    checkbox
   }
 
   const sliderProps = {

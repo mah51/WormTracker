@@ -6,7 +6,8 @@ function Grid({
   xGrid,
   table,
   handleGridClick,
-  gridOpacity
+  gridOpacity,
+  checkbox
               }) {
   return (
     <div>
@@ -20,7 +21,7 @@ function Grid({
       className={"grid"}
       style={
         {
-          height: ( heightGrid - yGrid ).toString() + 'px',
+          height: ( checkbox ? widthGrid - xGrid : heightGrid - yGrid ).toString() + 'px',
           width: ( widthGrid - xGrid ).toString() + 'px',
           top: ( yGrid.toString() ) + 'px',
           left: ( xGrid.toString() ) + 'px',

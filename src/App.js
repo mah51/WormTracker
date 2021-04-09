@@ -287,7 +287,7 @@ function App() {
               <Sliders {...sliderProps} />
               <ExImport {...exImportProps} />
               <div className="footer">
-                <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a> in collaboration with <a href="mailto:ssa29@kent.ac.uk">Salha</a>. </p>
+                <p>Made by Michael Hall <a href={'https://github.com/mah51'}>(@mah51)</a> in collaboration with <a href="mailto:ssa29@kent.ac.uk">Salha Abdulgialil</a>. </p>
                 <p>For instructions on how to use this tool, reporting issues, and viewing the code:  <a href={'https://github.com/mah51/WormTracker'}>WormTracker Repo</a></p>
               </div>
             </div>

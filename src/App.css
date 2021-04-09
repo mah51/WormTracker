@@ -108,7 +108,7 @@ table, th, td {
 
 .imageContainer{ width: 70vw; }
 
-.formContainer{ width:30vw; height:100vh; z-index: 10000; background-color: white; padding: 5vh 3vw 5vh 3vw; border-left: 0.2vh solid lightgray}
+.formContainer{ position: absolute; right: 0;  width:30vw; height:100vh; z-index: 10000; background-color: white; padding: 5vh 3vw 5vh 3vw; border-left: 0.2vh solid lightgray}
 
 html, body {margin: 0; height: 100%;}
 

@@ -26,6 +26,8 @@ To use this website you have to make sure the height of your browser is over 700
 This code is Open-source under [GPLv3 Licensed](https://github.com/mah51/WormTracker/blob/main/LICENSE)
 
 ![Screenshot of website](/screenshots/1.png)
+![Uploading Screen Shot 2021-05-24 at 01.56.28.png…]()
+
 
 ###//TODO:
 - General display fixes. 
